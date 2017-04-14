@@ -13,7 +13,13 @@
 
 
  */
+@import 'reset';
 @import 'font-awesome';
 @import 'bootstrap-social';
 @import 'bootstrap-generators';
 @import 'bootstrap-variables';
+@import 'landing';
+
+body {
+    background-color: #2E8B57;
+}
