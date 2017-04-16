@@ -52,6 +52,6 @@ before_action :authenticate!, except: [:index]
 
   # Only allow a trusted parameter "white list" through.
   def home_params
-    params.require(:home).permit(:address, :city, :state, :zip, :bedrooms, :baths, :square_feet, :price, :description, :image_data)
+    params.require(:home).permit(:address, :city, :state, :zip, :bedrooms, :baths, :square_feet, :price, :description, :image)
   end
 end

@@ -1,3 +1,3 @@
 class Home < ApplicationRecord
-    include ImageUploader[:image]
+  include ImageUploader[:image]
 end
