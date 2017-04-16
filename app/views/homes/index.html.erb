@@ -31,7 +31,10 @@
             <% end %>
           </div>
           <ul>
-          <li>$ <%= home.price %></li>
+            <li>Price: $ <%= home.price %></li>
+          </ul>
+          <ul>
+           <li>posted <%= ((Time.now - home.created_at)/(60*60*24)).to_i %> days ago.</li>
           </ul>
 
         </div>
