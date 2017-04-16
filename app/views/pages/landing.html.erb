@@ -22,15 +22,19 @@
 <body class="controller-<%= controller_name%> action-<%= action_name%>">
 
   <div class="jumbotron landing-jumbotron">
-    <h1>| Tiny Estates |</h1>
-    <p>Your Homestead escape from the conventional high priced mortgage</p>
+    <div class="container">
+      <h1>| Tiny Estates |</h1>
+      <p>Your Homestead escape from the conventional high priced mortgage</p>
+      <input type="text" class="form-control" placeholder="Search for your dream home">
+    </div>
   </div>
 
-<%= link_to "| sign in with GitHub |", homes_path, class: "btn btn-default" %>
-
-<button type="button" class="btn btn-success">
-| view tiny homes |
-</button>
+<div class="container pull-right">
+    <%= link_to "| sign in with GitHub |", homes_path, class: "btn btn-default" %>
+    <button type="button" class="btn btn-success">
+    | view tiny homes |
+    </button>
+</div>
 
 </body>
 </html>
