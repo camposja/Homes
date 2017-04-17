@@ -12,16 +12,15 @@
       <div class="media">
         <div class="media-left">
           <a href="#">
-            <img class="media-object" src="<%= home.image_url %>" height="72" width="72">
+            <img class="media-object" src="<%= home.image_url %>" height="110" width="110">
           </a>
         </div>
         <div class="media-body">
           <h4 class="media-heading"><%= home.description %></h4>
-          <%= home.city %>, <%= home.state %>  <%= home.zip %>
 
           <div class="btn-group pull-right" role="group">
             <%= link_to home do %>
-              <button type="button" class="btn-group btn-default btn-xs">View Home</button>
+              <button type="button" class="btn-group btn-default btn-xs">View <span class="glyphicon glyphicon-home" aria-hidden="true"></span></button>
             <% end %>
             <%= link_to edit_home_path(home) do %>
               <button type="button" class="btn-group btn-default btn-xs">Edit</button>
@@ -30,6 +29,10 @@
               <button type="button" class="btn-group btn-default btn-xs">Delete <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
             <% end %>
           </div>
+
+          <h5><%= home.city %>, <%= home.state %>  <%= home.zip %></h5>
+          <h5>| <%= home.bedrooms %> Beds |  | <%= home.baths %> Baths |</h5>
+
           <ul>
             <li>Price: $ <%= home.price %></li>
           </ul>

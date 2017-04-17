@@ -10,35 +10,20 @@
   <h1>| Tiny Home details |</h1>
 </div>
 
-<dl class="dl-horizontal">
-  <dt>Address:</dt>
-  <dd><%= @home.address %></dd>
-
-  <dt>City:</dt>
-  <dd><%= @home.city %></dd>
-
-  <dt>State:</dt>
-  <dd><%= @home.state %></dd>
-
-  <dt>Zip:</dt>
-  <dd><%= @home.zip %></dd>
-
-  <dt>Bedrooms:</dt>
-  <dd><%= @home.bedrooms %></dd>
-
-  <dt>Baths:</dt>
-  <dd><%= @home.baths %></dd>
-
-  <dt>Square feet:</dt>
-  <dd><%= @home.square_feet %></dd>
-
-  <dt>Price:</dt>
-  <dd><%= @home.price %></dd>
-
-  <dt>Description:</dt>
-  <dd><%= @home.description %></dd>
-
-  <dt>Image:</dt>
-  <dd><%= image_tag(@home.image_url, size: "420") %></dd>
-
-</dl>
+<!-- Columns are always 50% wide, on mobile and desktop -->
+<div class="row">
+  <div class="col-xs-6">
+    <dt>Image:</dt>
+    <%= image_tag(@home.image_url, size: "420") %>
+  </div>
+  <div class="col-xs-6">
+    <dl class="dl-horizontal">
+      <h4><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Address: </h4>
+      <h1><%= @home.address %></h1>
+      <h2><%= @home.city %>, <%= @home.state %>  <%= @home.zip %></h2>
+      <h4>| <%= @home.bedrooms %> beds | | <%= @home.baths %> baths | | <%= @home.square_feet %> sq. feet |</h4>
+      <h5><span class="glyphicon glyphicon-home" aria-hidden="true"></span></h5>
+      <div class="well well-sm"><h3>FOR SALE: $ <%= @home.price %></h3></div>
+      <div class="well well-sm">Description: <h4><%= @home.description %></h4></div>
+  </div>
+</div>
