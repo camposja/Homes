@@ -34,10 +34,10 @@
           <h5>| <%= home.bedrooms %> Beds |  | <%= home.baths %> Baths |</h5>
 
           <ul>
-            <li>Price: $ <%= home.price %></li>
+            <li>Price:  <%= number_to_currency(home.price, precision: 0) %></li>
           </ul>
           <ul>
-           <li>posted <%= ((Time.now - home.created_at)/(60*60*24)).to_i %> days ago.</li>
+            <li class="<%= home_age_class(home.created_at) %>">posted <%= distance_of_time_in_words_to_now(home.created_at) %> ago</li>
           </ul>
 
         </div>
