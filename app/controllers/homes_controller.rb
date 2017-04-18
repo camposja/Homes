@@ -18,6 +18,9 @@ before_action :authenticate!, except: [:index]
   # GET /homes/1/edit
   def edit
     @home = Home.find(params[:id])
+    unless @home.can_this_user_edit?(current_user)
+      send_them_back_with_error
+    end
   end
 
   # POST /homes
@@ -35,6 +38,11 @@ before_action :authenticate!, except: [:index]
   # PATCH/PUT /homes/1
   def update
     @home = Home.find(params[:id])
+
+    unless @home.can_this_user_edit?(current_user)
+      redirect_to homes_path, notice: "You are not allowed to Edit this home"
+    end
+
     if @home.update(home_params)
       redirect_to @home, notice: 'Home was successfully updated.'
     else
@@ -45,11 +53,20 @@ before_action :authenticate!, except: [:index]
   # DELETE /homes/1
   def destroy
     @home = Home.find(params[:id])
+
+    unless @home.can_this_user_destroy?(current_user)
+      send_them_back_with_error
+    end
+
     @home.destroy
     redirect_to homes_url, notice: 'Home was successfully destroyed.'
   end
 
   private
+
+  def send_them_back_with_error
+    redirect_to homes_path, notice: "You are not allowed to Edit this home"
+  end
 
   # Only allow a trusted parameter "white list" through.
   def home_params

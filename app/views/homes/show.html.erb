@@ -15,16 +15,15 @@
 
 <!-- Columns are always 50% wide, on mobile and desktop -->
 <div class="row">
-  <div class="col-xs-6">
+  <div class="col-md-6 col-sm-12">
     <dt>Image:</dt>
     <%= image_tag(@home.image_url, size: "420") %>
   </div>
-  <div class="col-xs-6">
+  <div class="col-md-6 col-sm-12">
     <dl class="dl-horizontal">
       <h2><%= @home.city %>, <%= @home.state %>  <%= @home.zip %></h2>
       <h4>| <%= @home.bedrooms %> beds | | <%= @home.baths %> baths | | <%= @home.square_feet %> sq. feet |</h4>
       <h5><span class="glyphicon glyphicon-home" aria-hidden="true"></span></h5>
-      <h5><%= @home.created_by %></h5>
       <div class="well well-sm"><h3>FOR SALE:  <%= number_to_currency(@home.price, precision: 0) %></h3></div>
       <div class="well well-sm">Description: <h4><%= @home.description %></h4></div>
   </div>
