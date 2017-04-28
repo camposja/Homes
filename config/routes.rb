@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   get 'pages/landing'
-
   resources :homes
-
   root 'pages#landing'
+
+  get '/search' => 'homes#search'
 
   get    '/auth/:provider'          => 'omniauth#auth',    as: :auth
   get    '/auth/:provider/callback' => 'session#create'

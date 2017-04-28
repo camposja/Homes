@@ -62,6 +62,10 @@ before_action :authenticate!, except: [:index]
     redirect_to homes_url, notice: 'Home was successfully destroyed.'
   end
 
+  def search
+    @homes_search = Home.search(params[:search])
+  end
+
   private
 
   def send_them_back_with_error
