@@ -12,6 +12,6 @@ class Home < ApplicationRecord
   end
 
   def self.search(search)
-    where("address LIKE ? or city LIKE ? or state LIKE ? or zip LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
+    where("address ILIKE ? or city ILIKE ? or state ILIKE ? or zip ILIKE ? or description ILIKE ?", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%" , "%#{search}%")
   end
 end
