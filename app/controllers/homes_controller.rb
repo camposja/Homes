@@ -2,7 +2,11 @@ class HomesController < ApplicationController
 before_action :authenticate!, except: [:index]
   # GET /homes
   def index
-    @homes = Home.all
+    if params[:search]
+      @homes = Home.where('name like :pattern or description like :pattern', pattern: "%#{params[:search]}%")
+    else
+      @homes = Home.all
+    end
   end
 
   # GET /homes/1
