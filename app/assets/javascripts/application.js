@@ -14,3 +14,5 @@
 //= require jquery_ujs
 
 //= require 'cable'
+//= require 'homes'
+//= require 'application'
