@@ -3,7 +3,7 @@ before_action :authenticate!, except: [:index]
   # GET /homes
   def index
     if params[:search]
-      @homes = Home.where('name like :pattern or description like :pattern', pattern: "%#{params[:search]}%")
+      @homes = Home.where('zip like :pattern or description like :pattern', pattern: "%#{params[:search]}%")
     else
       @homes = Home.all
     end

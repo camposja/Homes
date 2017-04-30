@@ -6,47 +6,10 @@
     <% if @homes_search.empty? %>
       <h2>Sorry, no matching tiny homes were found.</h2>
     <% else %>
+
       <%- @homes_search.each do |home| %>
-        <ul class="list-group">
-          <li class="list-group-item">
-            <div class="media">
-              <div class="media-left">
-                <a href="#">
-                  <img class="media-object" src="<%= home.image_url %>" height="110" width="110">
-                </a>
-              </div>
-              <div class="media-body">
-                <h4 class="media-heading"><%= home.description %></h4>
-
-                <div class="btn-group pull-right" role="group">
-                  <%= link_to home do %>
-                    <button type="button" class="btn-group btn-default btn-xs">View <span class="glyphicon glyphicon-home" aria-hidden="true"></span></button>
-                  <% end %>
-                  <% if logged_in? %>
-                    <%= link_to edit_home_path(home) do %>
-                      <button type="button" class="btn-group btn-default btn-xs">Edit</button>
-                    <% end %>
-                  <% end %>
-                  <% if logged_in? %>
-                    <%= link_to home, method: :delete, data: { confirm: 'Are you sure?' } do %>
-                      <button type="button" class="btn-group btn-default btn-xs">Delete <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-                    <% end %>
-                  <% end %>
-                </div>
-
-                <h5><%= home.city %>, <%= home.state %>  <%= home.zip %></h5>
-                <h5>| <%= home.bedrooms %> Beds |  | <%= home.baths %> Baths |</h5>
-
-                <ul>
-                  <li>Price:  <%= number_to_currency(home.price, precision: 0) %></li>
-                </ul>
-                <ul>
-                  <li class="<%= home_age_class(home.created_at) %>">posted <%= distance_of_time_in_words_to_now(home.created_at) %> ago</li>
-                </ul>
-
-              </div>
-            </div>
-          </li>
+        <ul class="list-group homes-list-group">
+          <%= render home %>
+          <% end %>
         </ul>
-      <% end %>
   <% end %>
