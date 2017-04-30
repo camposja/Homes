@@ -67,7 +67,7 @@ before_action :authenticate!, except: [:index]
   end
 
   def search
-    @homes_search = Home.search(params[:search])
+    @homes = Home.search(params[:search])
   end
 
   private

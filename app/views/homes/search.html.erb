@@ -3,13 +3,12 @@
 </div>
 <div class=>
   <ul class=>
-    <% if @homes_search.empty? %>
+    <% if @homes.empty? %>
       <h2>Sorry, no matching tiny homes were found.</h2>
     <% else %>
 
-      <%- @homes_search.each do |home| %>
         <ul class="list-group homes-list-group">
-          <%= render home %>
-          <% end %>
+          <%= render @homes %>
+
         </ul>
   <% end %>
