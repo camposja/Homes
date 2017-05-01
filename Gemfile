@@ -63,7 +63,7 @@ gem 'shrine-sql'
 gem 'roda'
 
 # Pagination
-gem 'kaminari'
+gem 'kaminari', :git => "git://github.com/amatsuda/kaminari.git", :branch => 'master'
 
 group :development do
   gem 'awesome_print'
