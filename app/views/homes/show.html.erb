@@ -16,8 +16,8 @@
 <!-- Columns are always 50% wide, on mobile and desktop -->
 <div class="row">
   <div class="col-md-6 col-sm-12">
-    <dt>Image:</dt>
-    <%= image_tag(@home.image_url, size: "420") %>
+    <%= image_tag(@home.image_url(:medium)) %>
+
   </div>
   <div class="col-md-6 col-sm-12">
     <dl class="dl-horizontal">

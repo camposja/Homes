@@ -8,4 +8,15 @@ module HomesHelper
       return "standard-home"
     end
   end
+
+  def heart_class(home, user)
+    # Does a favorite exist for THIS home and THIS user
+    favorite = Favorite.find_by(home: home, user: user)
+
+    if favorite
+      "glyphicon-heart"
+    else
+      "glyphicon-heart-empty"
+    end
+  end
 end

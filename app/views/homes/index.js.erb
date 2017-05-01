@@ -1,3 +1,7 @@
 console.log('This is from the server, NIIIICE. there are <%= @homes.size %> homes matched')
 
-$('.homes-list-group').html('<%= j(render @homes) %>')
+<% if @homes.any? %>
+  $('.homes-list-group').html('<%= j(render @homes) %>')
+<% else %>
+  $('.homes-list-group').html('<%= j(render 'nohomes' ) %>')
+<% end %>

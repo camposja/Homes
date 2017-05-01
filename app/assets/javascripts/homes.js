@@ -4,7 +4,26 @@
 $(document).ready(function() {
 
   $('.heart-art').on('click', function(event) {
-    $(this).css({color: 'red'})
+    let homeId = $(this).data('home-id')
+    let favorited = $(this).hasClass('glyphicon-heart')
+
+    console.log(`clicked on ${homeId}`)
+    
+    $(this).toggleClass('glyphicon-heart-empty')
+    $(this).toggleClass('glyphicon-heart')
+
+    if (favorited) {
+      $.ajax({
+        method: 'POST',
+        url: `/homes/${homeId}/unfavorite`
+      })
+    } else {
+      $.ajax({
+        method: 'POST',
+        url: `/homes/${homeId}/favorite`
+      })
+    }
+
   })
 
   $('#search').on('input', function(event) {

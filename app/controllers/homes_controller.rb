@@ -1,5 +1,6 @@
 class HomesController < ApplicationController
-before_action :authenticate!, except: [:index]
+  before_action :authenticate!, except: [:index]
+
   # GET /homes
   def index
     if params[:search]
@@ -66,8 +67,20 @@ before_action :authenticate!, except: [:index]
     redirect_to homes_url, notice: 'Home was successfully destroyed.'
   end
 
-  def search
-    @homes = Home.search(params[:search])
+  def favorite
+    home = Home.find(params[:id])
+
+    Favorite.create(home: home, user: current_user)
+
+    Rails.logger.debug "FAVORITING"
+  end
+
+  def unfavorite
+    home = Home.find(params[:id])
+    favorite = Favorite.find_by(home: home, user: current_user)
+    favorite.destroy
+
+    Rails.logger.debug "UNFAVORITING"
   end
 
   private

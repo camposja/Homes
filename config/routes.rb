@@ -1,9 +1,16 @@
 Rails.application.routes.draw do
   get 'pages/landing'
-  resources :homes
   root 'pages#landing'
 
-  get '/search' => 'homes#search'
+
+  resources :homes do
+    member do
+      post 'favorite'
+      post 'unfavorite'
+    end
+  end
+
+  get '/search' => 'homes#index'
 
   get    '/auth/:provider'          => 'omniauth#auth',    as: :auth
   get    '/auth/:provider/callback' => 'session#create'

@@ -61,6 +61,8 @@ gem 'jquery-ui-rails'
 gem 'shrine'
 gem 'shrine-sql'
 gem 'roda'
+gem "image_processing"
+gem "mini_magick", ">= 4.3.5"
 
 # Pagination
 gem 'kaminari', :git => "git://github.com/amatsuda/kaminari.git", :branch => 'master'
