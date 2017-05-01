@@ -62,6 +62,9 @@ gem 'shrine'
 gem 'shrine-sql'
 gem 'roda'
 
+# Pagination
+gem 'kaminari'
+
 group :development do
   gem 'awesome_print'
   gem 'dotenv-rails'
