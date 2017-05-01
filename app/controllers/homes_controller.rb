@@ -5,7 +5,8 @@ before_action :authenticate!, except: [:index]
     if params[:search]
       @homes = Home.where('zip like :pattern or description like :pattern', pattern: "%#{params[:search]}%")
     else
-      @homes = Home.all
+      @homes = Home.order(:price).page(params[:page]).per(4)
+
     end
   end
 
