@@ -4,10 +4,12 @@ class HomesController < ApplicationController
   # GET /homes
   def index
     if params[:search]
-      @homes = Home.where('zip like :pattern or description like :pattern or city like :pattern', pattern: "%#{params[:search]}%")
+      @homes = Home.where('zip ilike :pattern or description ilike :pattern or city ilike :pattern', pattern: "%#{params[:search]}%")
     else
-      @homes = Home.order(:price).page(params[:page]).per(5)
+      @homes = Home.order(:price)
     end
+
+    @homes = @homes.page(params[:page]).per(5)
   end
 
   # GET /homes/1

@@ -36,8 +36,7 @@
 
       <div id="navbar" class="collapse navbar-collapse navbar-right">
         <ul class="nav navbar-nav">
-          <%= form_tag(search_path, :method => "get", id: "search-form", class: "navbar-form navbar-right form-inline") do %>
-
+          <%= form_tag(homes_path, :method => "get", id: "search-form", class: "navbar-form navbar-right form-inline") do %>
             <li class="active">
               <div class="form-group">
                 <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search...", style: 'width: 400px' %>
