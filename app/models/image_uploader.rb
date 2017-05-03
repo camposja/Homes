@@ -13,7 +13,7 @@ class ImageUploader < Shrine
       original = io.download
 
       size_800 = resize_to_limit!(original, 800, 800) { |cmd| cmd.auto_orient } # orient rotated images
-      size_500 = resize_to_limit(size_800,  500, 500)
+      size_500 = resize_to_limit(size_800,  450, 450)
       size_300 = resize_to_limit(size_500,  300, 300)
       size_64  = resize_to_limit(size_300, 64, 64)
 
