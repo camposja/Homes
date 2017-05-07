@@ -16,9 +16,10 @@ class NotificationsMailer < ApplicationMailer
   #
   #   en.notifications_mailer.home_added.subject
   #
-  def home_added
-    @greeting = "Hi"
+  def home_added(home)
+    @home = home
 
-    mail to: "to@example.org"
+    mail subject: "New home available in | Tiny Estates|",
+              to: "to@example.org"
   end
 end

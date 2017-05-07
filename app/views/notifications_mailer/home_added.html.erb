@@ -1,10 +1,12 @@
-<h1>Welcome to | Tiny Estates |</h1>
+<h1>There has been a new home posted on | Tiny Estates |</h1>
 
-<p>
-  Thank you for signing up to | Tiny Estates |. You can see the latest Tiny Homes
-  <%= link_to "for sale", homes_url %>
-</p>
+<h2><%= @home.description %></h2>
+<h3>Address: <%= @home.address %></h3>
+<h3><%= @home.city %>, <%= @home.state %></h3>
 
-<p>
-  Have a Tiny Home you want to sell, <%= link_to "list it on | Tiny Estates |", new_home_url %>
-</p>
+<%= image_tag(@home.image_url(:medium)) %>
+<h4>
+  <%= link_to home_url(@home) do %>
+    This lovely Tiny home is listed at <%= number_to_currency(@home.price, precision: 0) %>
+  <% end %>
+</h4>
