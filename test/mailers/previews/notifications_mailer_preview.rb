@@ -3,7 +3,7 @@ class NotificationsMailerPreview < ActionMailer::Preview
 
   # Preview this email at http://localhost:3000/rails/mailers/notifications_mailer/signup
   def signup
-    NotificationsMailer.signup
+    NotificationsMailer.signup(User.first)
   end
 
   # Preview this email at http://localhost:3000/rails/mailers/notifications_mailer/home_added
