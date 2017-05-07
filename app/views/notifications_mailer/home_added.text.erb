@@ -1,6 +1,9 @@
-Welcome to | Tiny Estates |
+There has been a new home posted on | Tiny Estates |
 
-Thank you for signing up to | Tiny Estates |. You can see the latest
-Tiny Homes here: <%= homes_url %>
+<%= @home.description %>
+Address: <%= @home.address %>
+<%= @home.city %>, <%= @home.state %>
 
-Have a Tiny Home you want to sell, list it on | Tiny Estates | here: <%= new_home_url %>
+<%= image_tag(@home.image_url(:medium)) %>
+
+    This lovely Tiny home is listed at <%= number_to_currency(@home.price, precision: 0) %>
