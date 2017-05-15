@@ -6,19 +6,19 @@ This website utilizes and integrates multiple technologies recently learned. The
 
 Technologies and feature used:
 
-* Ruby version
+* Bootstrap
 
-* System dependencies
+* Omniauth for GitHub
 
-* Configuration
+* Real time search with JavaScript
 
-* Database creation
+* Shrine Image processing
 
-* Database initialization
+* Email capabilities
 
-* How to run the test suite
+* Kaminari gem pagination
 
-* Services (job queues, cache servers, search engines, etc.)
+* Home favoriting with jQuery and AJAX
 
 ![](https://raw.githubusercontent.com/camposja/Homes/master/docs/Screen%20Shot%202017-05-08%20at%208.54.13%20PM.png)
 
