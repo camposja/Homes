@@ -4,7 +4,7 @@ class NotificationsMailer < ApplicationMailer
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
-  #   en.notifications_mailer.signup.subject
+  #  en.notifications_mailer.signup.subject
   #
   def signup(user_that_just_signed_up)
     mail to: user_that_just_signed_up.name,
