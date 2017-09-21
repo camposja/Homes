@@ -44,11 +44,9 @@
               <div class="form-group">
                 <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search...", style: 'width: 400px' %>
               </div>
-          <% end %>
-          </li>
+                <% end %>
+            </li>
         </ul>
-
-
 
         <% if logged_in? %>
           <ul class="nav navbar-nav navbar-right">
@@ -59,15 +57,14 @@
               <p class="navbar-text"><%= link_to "| Logout |", logout_path %></p>
             </li>
           </ul>
-          <% else %>
+        <% else %>
           <ul class="nav navbar-nav navbar-right">
             <li>
               <p class="navbar-text"><%= link_to "| Log in |", auth_path(provider: "GitHub") %></p>
             </li>
           </ul>
-          <% end %>
-          </div>
-
+        <% end %>
+      </div>
     </div>
   </nav>
 
