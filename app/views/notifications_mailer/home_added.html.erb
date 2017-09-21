@@ -1,12 +1,14 @@
-<h1>There has been a new home posted on | Tiny Estates |</h1>
+<h1>A new home has been posted on | Tiny Estates |</h1>
 
 <h2><%= @home.description %></h2>
 <h3>Address: <%= @home.address %></h3>
-<h3><%= @home.city %>, <%= @home.state %></h3>
+<h3>City: <%= @home.city %>, <%= @home.state %></h3>
+<h3>This lovely Tiny home is listed for <%= number_to_currency(@home.price, precision: 0) %>. </h3>
+<h3>
+  Get more information about this property by clicking
+    <%= link_to home_url(@home) do %>
+      here.
+    <% end %>
+</h3>
 
 <%= image_tag(@home.image_url(:medium)) %>
-<h4>
-  <%= link_to home_url(@home) do %>
-    This lovely Tiny home is listed at <%= number_to_currency(@home.price, precision: 0) %>
-  <% end %>
-</h4>
