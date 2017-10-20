@@ -10,8 +10,8 @@ class SessionController < ApplicationController
     if current_user
       # Send the email notifying the user!
       NotificationsMailer.signup(@user).deliver_later
-
-      redirect_to root_path
+      # byebug
+      redirect_to request.referer
     else
       redirect_to auth_path(provider: 'github')
     end

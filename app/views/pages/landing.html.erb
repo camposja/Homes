@@ -28,7 +28,10 @@
     <div class="container">
       <h1><span class="posts">Tiny Estates</span></h1>
       <p>Your Homestead escape from the conventional high priced mortgage <span class="glyphicon glyphicon-home" aria-hidden="true"></span></p>
-      <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search for your dream home..." %>
+      <%= form_tag homes_path , method: :get do -%>
+        <%= text_field_tag :q, params[:q], class: "form-control", placeholder: "Search for your dream home..." %>
+        <%= submit_tag "Sort" %>
+      <% end %>
     </div>
   </div>
 

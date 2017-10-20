@@ -3,6 +3,7 @@ class HomesController < ApplicationController
 
   # GET /homes
   def index
+    params[:search] = params[:q] if params[:q].present?
     if params[:search]
       @homes = Home.where('zip ilike :pattern or description ilike :pattern or city ilike :pattern', pattern: "%#{params[:search]}%")
     else
