@@ -31,7 +31,7 @@
       <%= form_tag homes_path , method: :get do -%>
         <%= text_field_tag :q, params[:q], class: "form-control", placeholder: "Search for your dream home..." %>
         <br>
-        <%= submit_tag "Submit" %>
+        <%= submit_tag "Submit", class: "btn btn-default" %>
       <% end %>
     </div>
   </div>
