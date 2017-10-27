@@ -20,7 +20,7 @@ class SessionController < ApplicationController
   # logout
   def destroy
     session[:user_id] = nil
-    redirect_to root_path
+    redirect_to homes_path
   end
 
   # Show the failure page

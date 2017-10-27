@@ -3,9 +3,11 @@
     <span class="glyphicon glyphicon-list-alt"></span>
     Back
   <% end %>
-  <%= link_to edit_home_path(@home), class: 'btn btn-info' do %>
-    <span class="glyphicon glyphicon-pencil"></span>
-    Edit
+  <% if logged_in? %>
+    <%= link_to edit_home_path(@home), class: 'btn btn-info' do %>
+      <span class="glyphicon glyphicon-pencil"></span>
+      Edit
+    <% end %>
   <% end %>
   <h1>
     <span class="glyphicon glyphicon-home" aria-hidden="true"></span> Address:

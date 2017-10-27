@@ -4,19 +4,25 @@
 $(document).ready(function() {
 
   $('.heart-art').on('click', function(event) {
-    let homeId = $(this).data('home-id')
-    let favorited = $(this).hasClass('glyphicon-heart')
-
-    console.log(`clicked on ${homeId}`)
-    
-    $(this).toggleClass('glyphicon-heart-empty')
-    $(this).toggleClass('glyphicon-heart')
+    let homeId = $(this).data('home-id');
+    let favorited = $(this).hasClass('glyphicon-heart');
+    console.log(`clicked on ${homeId}`);
+    $(this).toggleClass('glyphicon-heart-empty');
+    $(this).toggleClass('glyphicon-heart');
 
     if (favorited) {
       $.ajax({
         method: 'POST',
-        url: `/homes/${homeId}/unfavorite`
-      })
+        url: `/homes/${homeId}/unfavorite`,
+        // success: function(){
+        // }
+      });
+      // .done(function( msg ) {
+      //   alert( "Data Saved: " + msg );
+      // }).fail(function(msg) {
+      //   alert( "error" +msg);
+      //   // window.location = ""
+      // });
     } else {
       $.ajax({
         method: 'POST',

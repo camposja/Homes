@@ -1,5 +1,5 @@
 class HomesController < ApplicationController
-  before_action :authenticate!, except: [:index]
+  before_action :authenticate!, except: [:index, :show]
 
   # GET /homes
   def index
@@ -71,18 +71,24 @@ class HomesController < ApplicationController
   end
 
   def favorite
+    # unless logged_in?
+      # redirect_to login_path
+    # end
     home = Home.find(params[:id])
-
     Favorite.create(home: home, user: current_user)
-
     Rails.logger.debug "FAVORITING"
   end
 
   def unfavorite
     home = Home.find(params[:id])
     favorite = Favorite.find_by(home: home, user: current_user)
-    favorite.destroy
-
+    respond_to do |format|
+      if favorite.destroy
+        format.json { head :ok }
+      else
+        format.json { head :fail , message: login_url}
+      end
+    end
     Rails.logger.debug "UNFAVORITING"
   end
 
