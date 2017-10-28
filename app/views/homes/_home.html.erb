@@ -1,4 +1,4 @@
-<li class="list-group-item">
+<!-- <li class="list-group-item">
   <div class="media">
     <div class="media-left">
       <a href="#">
@@ -24,8 +24,8 @@
         <% end %>
       </div>
 
-      <h5><%= home.city %>, <%= home.state %>  <%= home.zip %></h5>
-      <h5>| <%= home.bedrooms %> Beds |  | <%= home.baths %> Baths |</h5>
+        <h5><%= home.city %>, <%= home.state %>  <%= home.zip %></h5>
+        <h5>| <%= home.bedrooms %> Beds |  | <%= home.baths %> Baths |</h5>
 
       <ul>
         <li>Price:  <%= number_to_currency(home.price, precision: 0) %></li>
@@ -37,8 +37,65 @@
         </li>
       </ul>
       <ul>
-        <li class="<%= home_age_class(home.created_at) %>">posted <%= distance_of_time_in_words_to_now(home.created_at) %> ago</li>
+        <li class="<%= home_age_class(home.created_at) %>">
+          posted <%= distance_of_time_in_words_to_now(home.created_at) %> ago
+        </li>
+
+        <%= link_to home do %>
+          <button type="button" class="btn-group btn-default btn-xs">View <span class="glyphicon glyphicon-home" aria-hidden="true"></span></button>
+        <% end %>
+        <% if logged_in? %>
+          <%= link_to edit_home_path(home) do %>
+            <button type="button" class="btn-group btn-default btn-xs">Edit</button>
+          <% end %>
+        <% end %>
+        <% if logged_in? %>
+          <%= link_to home, method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <button type="button" class="btn-group btn-default btn-xs">Delete <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+          <% end %>
+        <% end %>
+
       </ul>
     </div>
   </div>
-</li>
+</li> -->
+
+
+<ul>
+  <li class="catbox wireframe">
+    <img src="<%= home.image_url(:medium) %>"  alt="Tiny Home Pic">
+      <div class="txtbox">
+        <h4 class="media-heading"><%= home.description %></h4>
+        <h5><%= home.city %>, <%= home.state %>  <%= home.zip %></h5>
+        <h5>| <%= home.bedrooms %> Beds |  | <%= home.baths %> Baths |</h5>
+        <ul>
+          <li>
+            Price:  <%= number_to_currency(home.price, precision: 0) %>
+          </li>
+          <li>
+            <!-- <div class="btn-group pull-right " role="group">
+              <span data-home-id="<%= home.id %>" class="heart-art glyphicon <%= heart_class(home, current_user) %>" aria-hidden="true"></span> this home
+            </div> -->
+          </li>
+          <li class="<%= home_age_class(home.created_at) %>">
+            posted <%= distance_of_time_in_words_to_now(home.created_at) %> ago
+          </li>
+
+          <%= link_to home do %>
+            <button type="button" class="btn-group btn-default btn-xs">View <span class="glyphicon glyphicon-home" aria-hidden="true"></span></button>
+          <% end %>
+          <% if logged_in? %>
+            <%= link_to edit_home_path(home) do %>
+              <button type="button" class="btn-group btn-default btn-xs">Edit</button>
+            <% end %>
+          <% end %>
+          <% if logged_in? %>
+            <%= link_to home, method: :delete, data: { confirm: 'Are you sure?' } do %>
+              <button type="button" class="btn-group btn-default btn-xs">Delete <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+            <% end %>
+          <% end %>
+
+        </ul>
+    </div>
+  </li>
+</ul>

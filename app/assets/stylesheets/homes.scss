@@ -9,3 +9,29 @@
 .heart-art.glyphicon-heart {
   color: red;
 }
+
+.wireframe {
+  border: 1px solid black;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+// catboxes logic from octodex project
+// 
+// .navbar {
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   background-color: #f3f3f3;
+// }
+//
+// .catbox {
+//   margin: 1em;
+// }
+//
+// .txtbox {
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+// }
