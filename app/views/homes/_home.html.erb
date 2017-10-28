@@ -35,12 +35,10 @@
             <span data-home-id="<%= home.id %>" class="heart-art glyphicon <%= heart_class(home, current_user) %>" aria-hidden="true"></span> this home
           </div>
         </li>
-
       </ul>
       <ul>
         <li class="<%= home_age_class(home.created_at) %>">posted <%= distance_of_time_in_words_to_now(home.created_at) %> ago</li>
       </ul>
-
     </div>
   </div>
 </li>
