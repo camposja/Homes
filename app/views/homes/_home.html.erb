@@ -1,3 +1,5 @@
+<!-- Old original code -->
+
 <!-- <li class="list-group-item">
   <div class="media">
     <div class="media-left">
@@ -60,8 +62,9 @@
   </div>
 </li> -->
 
+<!-- New code attempting to use Cat boxes -->
 
-<ul>
+<!-- <ul>
   <li class="catbox wireframe">
     <img src="<%= home.image_url(:medium) %>"  alt="Tiny Home Pic">
       <div class="txtbox">
@@ -73,9 +76,7 @@
             Price:  <%= number_to_currency(home.price, precision: 0) %>
           </li>
           <li>
-            <!-- <div class="btn-group pull-right " role="group">
-              <span data-home-id="<%= home.id %>" class="heart-art glyphicon <%= heart_class(home, current_user) %>" aria-hidden="true"></span> this home
-            </div> -->
+
           </li>
           <li class="<%= home_age_class(home.created_at) %>">
             posted <%= distance_of_time_in_words_to_now(home.created_at) %> ago
@@ -98,4 +99,30 @@
         </ul>
     </div>
   </li>
-</ul>
+</ul> -->
+
+<div class="col-lg-3">
+   <div class="panel">
+      <div class="panel-heading" style="background-color:white;color:#fff;"><strong>Lorem Ipsum</strong></div>
+      <div class="panel-body" style="background-color:#000;color:#fff; box-shadow:0 -12px 13px teal inset;">
+
+      <div class="boximg">
+       <img src="http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_52c470899a2e1_1.JPG" class="img-responsive">
+       <span class="label label-danger date">25 December 2015</span>
+       <span class="likebut glyphicon glyphicon-tag"></span>
+       </div>
+
+
+ <br>
+      <p class="pull-left">Lorem ipsum Lorem ipsum<br>
+         <span class="glyphicon glyphicon-star" style="font-size:18px;"></span>
+          <span class="glyphicon glyphicon-star" style="font-size:18px;"></span>
+           <span class="glyphicon glyphicon-star" style="font-size:18px;"></span>
+            <span class="glyphicon glyphicon-star" style="font-size:18px;"></span>
+             <span class="glyphicon glyphicon-star-empty" style="font-size:18px;"></span>
+      </p>
+
+      <span class="badge pull-right" style="background-color:teal">25</span>
+    </div>
+   </div>
+</div>
