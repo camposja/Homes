@@ -71,7 +71,7 @@
       <%= link_to home do %>
         <div class="boximg">
          <img src="<%= home.image_url(:medium) %>" class="img-responsive">
-         <span class="label label-danger date">25 December 2015</span>
+         <span class="label label-danger date"><%= home.square_feet %> sq. feet</span>
          <span class="likebut glyphicon glyphicon-tag"></span>
          </div>
        <% end %>

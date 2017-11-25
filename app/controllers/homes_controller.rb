@@ -10,7 +10,7 @@ class HomesController < ApplicationController
       @homes = Home.order(:price)
     end
 
-    @homes = @homes.page(params[:page]).per(6)
+    @homes = @homes.page(params[:page]).per(8)
   end
 
   # GET /homes/1
