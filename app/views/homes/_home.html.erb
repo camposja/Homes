@@ -62,10 +62,13 @@
   </div>
 </li> -->
 
+<!-- After bootsnip element -->
 
 <div class="col-lg-3">
    <div class="panel">
-      <div class="panel-heading" style="background-color:#666;color:#fff;"><strong>Lorem Ipsum</strong></div>
+      <div class="panel-heading" style="background-color:#666;color:#fff;">
+        <strong><%= home.city %>, <%= home.state %>  <%= home.zip %></strong>
+      </div>
       <div class="panel-body" style="background-color:#666;color:#fff; box-shadow:0 -12px 13px green inset;">
 
       <%= link_to home do %>
@@ -73,18 +76,25 @@
          <img src="<%= home.image_url(:medium) %>" class="img-responsive">
          <span class="label label-danger date"><%= home.square_feet %> sq. feet</span>
          <span class="likebut glyphicon glyphicon-tag"></span>
-         </div>
-       <% end %>
+        </div>
+      <% end %>
 
 
- <br>
-      <p class="pull-left"><%= home.city %>, <%= home.state %>  <%= home.zip %><br>
-        | <%= home.bedrooms %> Beds |  | <%= home.baths %> Baths |
+      <br>
+      <p class="pull-left">
+        | <%= home.bedrooms %> Beds |  | <%= home.baths %> Baths |  <br>
+        <%= number_to_currency(home.price, precision: 0) %>         <br>
+        posted <%= distance_of_time_in_words_to_now(home.created_at) %> ago
       </p>
 
-      <!-- <span class="badge pull-right" style="background-color:teal">
+      <!-- Posted time ago with color red or default class -->
+      <!-- <p class="<%= home_age_class(home.created_at) %>">
+          posted <%= distance_of_time_in_words_to_now(home.created_at) %> ago
+      </p> -->
 
-      </span> -->
+      <!-- <span class="badge pull-right" style="background-color:teal"> -->
+
+      </span>
       <div class="pull-right" role="group">
         <span data-home-id="<%= home.id %>" class="heart-art glyphicon <%= heart_class(home, current_user) %>" aria-hidden="true"></span>
       </div>
