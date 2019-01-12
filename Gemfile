@@ -69,6 +69,7 @@ gem 'kaminari', :git => "git://github.com/amatsuda/kaminari.git", :branch => 'ma
 
 group :development do
   gem 'awesome_print'
+  gem 'brakeman'
   gem 'dotenv-rails'
 end
 
