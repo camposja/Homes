@@ -39,8 +39,9 @@ gem 'omniauth-github'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'better_errors'
   gem 'byebug', platform: :mri
+  gem 'pry'
 end
 
 group :development do
