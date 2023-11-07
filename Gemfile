@@ -1,4 +1,4 @@
-ruby '2.4.0'
+ruby '3.0.4'
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
@@ -8,11 +8,11 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.2'
+gem 'rails', '~> 6.1.4'
 # Use postgresql as the database for Active Record
-gem 'pg', '~> 0.18'
+gem 'pg', '~> 1.4.0'
 # Use Puma as the app server
-gem 'puma', '~> 3.0'
+gem 'puma'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -53,7 +53,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'bootstrap-generators', git: 'https://github.com/gstark/bootstrap-generators', branch: 'includes-simplified-controller-scaffold'
+gem 'bootstrap-generators'
 gem 'bootstrap-social-rails'
 gem 'font-awesome-rails'
 gem 'jquery-ui-rails'
@@ -66,7 +66,7 @@ gem "image_processing"
 gem "mini_magick", ">= 4.3.5"
 
 # Pagination
-gem 'kaminari', :git => "git://github.com/amatsuda/kaminari.git", :branch => 'master'
+gem 'kaminari'
 
 group :development do
   gem 'awesome_print'
@@ -74,8 +74,8 @@ group :development do
   gem 'dotenv-rails'
 end
 
-gem 'refile', github: 'gstark/refile', branch: 'updates-for-rails-5', require: 'refile/rails'
-gem 'refile-postgres'
+# gem 'refile'
+# gem 'refile-postgres'
 group :production do
   gem 'rails_12factor'
 end
