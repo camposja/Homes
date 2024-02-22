@@ -32,8 +32,8 @@ gem 'jquery-rails'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Authentication with oauth
-gem 'omniauth'
-gem 'omniauth-github'
+gem 'omniauth', '~> 1.6', '>= 1.6.1'
+gem 'omniauth-github', '~> 1.2', '>= 1.2.3'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
