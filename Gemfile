@@ -1,4 +1,4 @@
-ruby '3.0.4'
+ruby '3.2.2'
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
@@ -8,7 +8,7 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.1.4'
+gem 'rails', '~> 7.1.2'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.4.0'
 # Use Puma as the app server
@@ -47,7 +47,7 @@ end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
-  gem 'listen', '~> 3.0.5'
+  gem 'listen', '~> 3.5.1'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
