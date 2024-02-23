@@ -38,18 +38,6 @@ gem 'omniauth-github', '~> 1.2', '>= 1.2.3'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-group :development, :test do
-  gem 'better_errors'
-  gem 'byebug', platform: :mri
-  gem 'pry'
-end
-
-group :development do
-  # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
-  gem 'listen', '~> 3.5.1'
-end
-
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
@@ -68,10 +56,20 @@ gem "mini_magick", ">= 4.3.5"
 # Pagination
 gem 'kaminari'
 
+group :development, :test do
+  gem 'better_errors'
+  gem 'byebug', platform: :mri
+  gem 'pry'
+end
+
 group :development do
   gem 'awesome_print'
   gem 'brakeman'
   gem 'dotenv-rails'
+  gem 'listen', '~> 3.5.1'
+  gem 'rubocop'
+  # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
+  gem 'web-console', '>= 3.3.0'
 end
 
 # gem 'refile'
