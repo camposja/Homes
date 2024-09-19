@@ -1,7 +1,6 @@
 class SessionController < ApplicationController
   # logging in
-  def new
-  end
+  def new; end
 
   # handle the post from the login page
   def create
@@ -24,6 +23,6 @@ class SessionController < ApplicationController
 
   # Show the failure page
   def failure
-  # TODO, create failure.html.erb
+    # TODO, create failure.html.erb
   end
 end

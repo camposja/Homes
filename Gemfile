@@ -6,7 +6,6 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 7.1.2'
 # Use postgresql as the database for Active Record
@@ -51,7 +50,7 @@ gem 'shrine'
 gem 'shrine-sql'
 gem 'roda'
 gem "image_processing"
-gem "mini_magick", ">= 4.3.5"
+gem "mini_magick"
 
 # Pagination
 gem 'kaminari'
@@ -64,6 +63,7 @@ end
 
 group :development do
   gem 'awesome_print'
+  gem 'binding_of_caller'
   gem 'brakeman'
   gem 'dotenv-rails'
   gem 'listen', '~> 3.5.1'
