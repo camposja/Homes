@@ -10,16 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2017_05_01_211651) do
-
+ActiveRecord::Schema[7.1].define(version: 2017_05_01_211651) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "favorites", id: :serial, force: :cascade do |t|
     t.integer "home_id"
     t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["home_id"], name: "index_favorites_on_home_id"
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
@@ -40,8 +39,8 @@ ActiveRecord::Schema.define(version: 2017_05_01_211651) do
     t.integer "price"
     t.string "description"
     t.text "image_data"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.integer "created_by_id"
   end
 
@@ -51,8 +50,8 @@ ActiveRecord::Schema.define(version: 2017_05_01_211651) do
     t.string "uid"
     t.string "nickname"
     t.string "access_token"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
   end
 
   add_foreign_key "favorites", "homes"
