@@ -1,10 +1,13 @@
 require "shrine"
-require "shrine/storage/file_system"
+require "shrine/storage/sql"
 require "image_processing/mini_magick"
+require "sequel"
+
+DB = Sequel.connect(Rails.application.config.database_configuration[Rails.env])
 
 Shrine.storages = {
-  cache: Shrine::Storage::FileSystem.new("public", prefix: "uploads/cache"),
-  store: Shrine::Storage::FileSystem.new("public", prefix: "uploads")
+  cache: Shrine::Storage::Sql.new(database: DB, table: :files),
+  store: Shrine::Storage::Sql.new(database: DB, table: :files)
 }
 
 Shrine.plugin :activerecord
