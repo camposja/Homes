@@ -105,8 +105,13 @@ GEM
     connection_pool (2.5.3)
     content_disposition (1.0.0)
     crass (1.0.6)
+    database_cleaner-active_record (2.2.1)
+      activerecord (>= 5.a)
+      database_cleaner-core (~> 2.0.0)
+    database_cleaner-core (2.0.1)
     date (3.4.1)
     debug_inspector (1.2.0)
+    diff-lcs (1.6.2)
     dotenv (3.1.8)
     dotenv-rails (3.1.8)
       dotenv (= 3.1.8)
@@ -117,6 +122,13 @@ GEM
     erb (5.0.1)
     erubi (1.13.1)
     execjs (2.10.0)
+    factory_bot (6.5.1)
+      activesupport (>= 6.1.0)
+    factory_bot_rails (6.4.4)
+      factory_bot (~> 6.5)
+      railties (>= 5.0.0)
+    faker (3.5.1)
+      i18n (>= 1.8.11, < 2)
     faraday (2.13.1)
       faraday-net_http (>= 2.0, < 3.5)
       json
@@ -291,6 +303,23 @@ GEM
     roda (3.92.0)
       rack
     rouge (4.5.2)
+    rspec-core (3.13.3)
+      rspec-support (~> 3.13.0)
+    rspec-expectations (3.13.4)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.13.0)
+    rspec-mocks (3.13.4)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.13.0)
+    rspec-rails (6.1.5)
+      actionpack (>= 6.1)
+      activesupport (>= 6.1)
+      railties (>= 6.1)
+      rspec-core (~> 3.13)
+      rspec-expectations (~> 3.13)
+      rspec-mocks (~> 3.13)
+      rspec-support (~> 3.13)
+    rspec-support (3.13.3)
     rubocop (1.75.6)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
@@ -323,6 +352,8 @@ GEM
     securerandom (0.4.1)
     sequel (5.92.0)
       bigdecimal
+    shoulda-matchers (6.5.0)
+      activesupport (>= 5.2.0)
     shrine (3.6.0)
       content_disposition (~> 1.0)
       down (~> 5.1)
@@ -376,7 +407,10 @@ DEPENDENCIES
   bootstrap-social-rails
   brakeman
   byebug
+  database_cleaner-active_record
   dotenv-rails
+  factory_bot_rails
+  faker
   fastimage
   font-awesome-rails
   image_processing
@@ -393,8 +427,10 @@ DEPENDENCIES
   rails (~> 7.1.2)
   rails_12factor
   roda
+  rspec-rails (~> 6.1.0)
   rubocop
   sass-rails (~> 5.0)
+  shoulda-matchers
   shrine
   shrine-sql
   tzinfo-data

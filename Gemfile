@@ -60,6 +60,11 @@ group :development, :test do
   gem 'better_errors'
   gem 'byebug', platform: :mri
   gem 'pry'
+  gem 'rspec-rails', '~> 6.1.0'
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'shoulda-matchers'
+  gem 'database_cleaner-active_record'
 end
 
 group :development do

@@ -3,6 +3,15 @@ class Home < ApplicationRecord
 
   belongs_to :created_by, class_name: "User"
 
+  validates :address, presence: true
+  validates :city, presence: true
+  validates :state, presence: true
+  validates :zip, presence: true
+  validates :price, presence: true, numericality: { greater_than: 0 }
+  validates :bedrooms, numericality: { greater_than: 0 }
+  validates :baths, numericality: { greater_than: 0 }
+  validates :square_feet, numericality: { greater_than: 0 }
+
   after_commit :create_derivatives, on: [:create, :update]
 
   def create_derivatives
