@@ -39,7 +39,7 @@ class HomesController < ApplicationController
     if @home.save
       redirect_to @home, notice: 'Home was successfully created.'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -49,12 +49,13 @@ class HomesController < ApplicationController
 
     unless @home.can_this_user_edit?(current_user)
       redirect_to homes_path, notice: "You are not allowed to Edit this home"
+      return
     end
 
     if @home.update(home_params)
       redirect_to @home, notice: 'Home was successfully updated.'
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
