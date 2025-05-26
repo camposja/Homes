@@ -1,7 +1,19 @@
 class Home < ApplicationRecord
-  include ImageUploader[:image]
+  include ImageUploader::Attachment(:image)
 
   belongs_to :created_by, class_name: "User"
+
+  after_commit :create_derivatives, on: [:create, :update]
+
+  def create_derivatives
+    if image.present?
+      begin
+        image_derivatives!
+      rescue => e
+        Rails.logger.error "Failed to create derivatives: #{e.message}"
+      end
+    end
+  end
 
   def can_this_user_edit?(user)
     return created_by == user

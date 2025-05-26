@@ -1,10 +1,10 @@
-<!-- Old original code -->
+<!-- Original Card Layout -->
 
-<!-- <li class="list-group-item">
+<!--  <li class="list-group-item">
   <div class="media">
     <div class="media-left">
       <a href="#">
-        <img class="media-object" src="<%= home.image_url(:small) %>" height="110" width="110">
+        <img class="media-object" src="<%= home.image_url(:thumbnail) %>" height="110" width="110">
       </a>
     </div>
     <div class="media-body">
@@ -26,12 +26,11 @@
         <% end %>
       </div>
 
-        <h5><%= home.city %>, <%= home.state %>  <%= home.zip %></h5>
-        <h5>| <%= home.bedrooms %> Beds |  | <%= home.baths %> Baths |</h5>
+      <h5><%= home.city %>, <%= home.state %>  <%= home.zip %></h5>
+      <h5>| <%= home.bedrooms %> Beds |  | <%= home.baths %> Baths |</h5>
 
       <ul>
         <li>Price:  <%= number_to_currency(home.price, precision: 0) %></li>
-
         <li>
           <div class="btn-group pull-right " role="group">
             <span data-home-id="<%= home.id %>" class="heart-art glyphicon <%= heart_class(home, current_user) %>" aria-hidden="true"></span> this home
@@ -42,40 +41,30 @@
         <li class="<%= home_age_class(home.created_at) %>">
           posted <%= distance_of_time_in_words_to_now(home.created_at) %> ago
         </li>
-
-        <%= link_to home do %>
-          <button type="button" class="btn-group btn-default btn-xs">View <span class="glyphicon glyphicon-home" aria-hidden="true"></span></button>
-        <% end %>
-        <% if logged_in? %>
-          <%= link_to edit_home_path(home) do %>
-            <button type="button" class="btn-group btn-default btn-xs">Edit</button>
-          <% end %>
-        <% end %>
-        <% if logged_in? %>
-          <%= link_to home, method: :delete, data: { confirm: 'Are you sure?' } do %>
-            <button type="button" class="btn-group btn-default btn-xs">Delete <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-          <% end %>
-        <% end %>
-
       </ul>
     </div>
   </div>
-</li> -->
+</li>   -->
 
-<!-- After bootsnip element -->
+<!-- Current Grid Card Layout with Bootsnip -->
 
 <div class="col-lg-3">
-   <div class="panel">
-      <div class="panel-heading" style="background-color:#666;color:#fff;">
-        <strong><%= home.city %>, <%= home.state %>  <%= home.zip %></strong>
-      </div>
-      <div class="panel-body" style="background-color:#666;color:#fff; box-shadow:0 -12px 13px green inset;">
-
+  <div class="panel">
+    <div class="panel-heading" style="background-color:#666;color:#fff;">
+      <strong><%= home.city %>, <%= home.state %>  <%= home.zip %></strong>
+    </div>
+    <div class="panel-body" style="background-color:#666;color:#fff; box-shadow:0 -12px 13px green inset;">
       <%= link_to home do %>
         <div class="boximg">
-         <img src="<%= home.image_url(:medium) %>" class="img-responsive">
-         <span class="label label-danger date"><%= home.square_feet %> sq. feet</span>
-         <span class="likebut glyphicon glyphicon-tag"></span>
+          <% if home.image %>
+            <% if home.image.is_a?(Hash) %>
+              <%= image_tag home.image[:thumbnail].url, class: "img-responsive", style: "max-height: 225px; width: auto; margin: 0 auto;" %>
+            <% else %>
+              <%= image_tag home.image.url, class: "img-responsive", style: "max-height: 225px; width: auto; margin: 0 auto;" %>
+            <% end %>
+          <% end %>
+          <span class="label label-danger date"><%= home.square_feet %> sq. feet</span>
+          <span class="likebut glyphicon glyphicon-tag"></span>
         </div>
       <% end %>
 
@@ -86,18 +75,9 @@
         posted <%= distance_of_time_in_words_to_now(home.created_at) %> ago
       </p>
 
-      <!-- Posted time ago with color red or default class -->
-      <!-- <p class="<%= home_age_class(home.created_at) %>">
-          posted <%= distance_of_time_in_words_to_now(home.created_at) %> ago
-      </p> -->
-
-      <!-- <span class="badge pull-right" style="background-color:teal"> -->
-      <!-- </span> -->
-
       <div class="pull-right" role="group">
         <span data-home-id="<%= home.id %>" class="heart-art glyphicon <%= heart_class(home, current_user) %>" aria-hidden="true"></span>
       </div>
-
 
       <div class="btn-group pull-right" role="group">
         <%= link_to home do %>
@@ -115,5 +95,5 @@
         <% end %>
       </div>
     </div>
-   </div>
+  </div>
 </div>

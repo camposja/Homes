@@ -19,7 +19,4 @@ Rails.application.routes.draw do
   get  '/login',  to: 'session#new'
   post '/login',  to: 'session#create'
   get  '/logout', to: 'session#destroy'
-
-  mount Shrine::download_endpoint, at: "/attachments"
-  # mount ImageUploader.derivation_endpoint, at: "/attachments"
 end

@@ -18,9 +18,13 @@
 <!-- Columns are always 50% wide, on mobile and desktop -->
 <div class="row">
   <div class="col-md-6 col-sm-12">
-    # TODO: need to fix image processing
-    <%# image_tag(@home.image_url(:medium)) %>
-
+    <% if @home.image %>
+      <% if @home.image.is_a?(Hash) %>
+        <%= image_tag @home.image[:large].url, class: "img-responsive" %>
+      <% else %>
+        <%= image_tag @home.image.url, class: "img-responsive" %>
+      <% end %>
+    <% end %>
   </div>
   <div class="col-md-6 col-sm-12">
     <dl class="dl-horizontal">

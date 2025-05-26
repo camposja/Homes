@@ -5,25 +5,32 @@ class ImageUploader < Shrine
   include ImageUploader[:image]
 
   include ImageProcessing::MiniMagick
-    plugin :processing
-    plugin :versions   # enable Shrine to handle a hash of files
-    plugin :delete_raw # delete processed files after uploading
+  plugin :processing
+  plugin :versions   # enable Shrine to handle a hash of files
+  plugin :delete_raw # delete processed files after uploading
+  plugin :store_dimensions
+  plugin :validation_helpers
+  plugin :determine_mime_type
+  plugin :derivatives
 
-    process(:store) do |io, context|
-      original = io.download
+  Attacher.validate do
+    validate_mime_type %w[image/jpeg image/png image/gif]
+    validate_max_size 5*1024*1024 # 5MB
+  end
 
-      # size_800 orient rotated images
-      size_800 = ImageProcessing::MiniMagick.source(original).resize_and_pad(800, 600) { |cmd| cmd.auto_orient }
-      size_500 = ImageProcessing::MiniMagick.source(size_800).resize_and_pad(500, 375)
-      size_300 = ImageProcessing::MiniMagick.source(size_500).resize_and_pad(300, 225)
-      size_64  = ImageProcessing::MiniMagick.source(size_300).resize_and_pad(64, 48)
+  Attacher.derivatives_processor do |original|
+    magick = ImageProcessing::MiniMagick.source(original)
 
-      {
-        original: io,
-        large: size_800,
-        medium: size_500,
-        small: size_300,
-        thumbnail: size_64
-      }
-    end
+    {
+      large:     magick.resize_to_limit!(800, 600),
+      medium:    magick.resize_to_limit!(500, 375),
+      small:     magick.resize_to_limit!(300, 225),
+      thumbnail: magick.resize_to_limit!(64, 48)
+    }
+  end
+
+  def generate_location(io, derivative: nil, **)
+    derivative = derivative.to_s if derivative
+    [ derivative, super ].compact.join("-")
+  end
 end

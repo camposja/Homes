@@ -9,7 +9,7 @@ end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 7.1.2'
 # Use postgresql as the database for Active Record
-gem 'pg', '~> 1.4.0'
+gem 'pg', '~> 1.1'
 # Use Puma as the app server
 gem 'puma'
 # Use SCSS for stylesheets
@@ -51,6 +51,7 @@ gem 'shrine-sql'
 gem 'roda'
 gem "image_processing"
 gem "mini_magick"
+gem 'fastimage'
 
 # Pagination
 gem 'kaminari'
