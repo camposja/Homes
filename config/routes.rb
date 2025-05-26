@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  # Mount Shrine download endpoint
+  mount Shrine.download_endpoint => "/attachments"
+
   get 'pages/landing'
   root 'pages#landing'
 

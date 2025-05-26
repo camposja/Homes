@@ -2,8 +2,6 @@ require "image_processing/mini_magick"
 
 class ImageUploader < Shrine
   # plugins and uploading logic
-  include ImageUploader[:image]
-
   include ImageProcessing::MiniMagick
   plugin :processing
   plugin :versions   # enable Shrine to handle a hash of files
@@ -12,13 +10,14 @@ class ImageUploader < Shrine
   plugin :validation_helpers
   plugin :determine_mime_type
   plugin :derivatives
+  plugin :pretty_location
 
   Attacher.validate do
     validate_mime_type %w[image/jpeg image/png image/gif]
     validate_max_size 5*1024*1024 # 5MB
   end
 
-  Attacher.derivatives_processor do |original|
+  Attacher.derivatives do |original|
     magick = ImageProcessing::MiniMagick.source(original)
 
     {
@@ -32,5 +31,15 @@ class ImageUploader < Shrine
   def generate_location(io, derivative: nil, **)
     derivative = derivative.to_s if derivative
     [ derivative, super ].compact.join("-")
+  end
+
+  # Override the default url method to handle SQL storage
+  def url(**options)
+    if id.nil?
+      nil
+    else
+      Rails.logger.debug "Generating URL for ID: #{id}"
+      "/attachments/#{id}"
+    end
   end
 end

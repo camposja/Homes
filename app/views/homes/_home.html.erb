@@ -57,8 +57,13 @@
       <%= link_to home do %>
         <div class="boximg">
           <% if home.image %>
-            <% if home.image.is_a?(Hash) %>
-              <%= image_tag home.image[:thumbnail].url, class: "img-responsive", style: "max-height: 225px; width: auto; margin: 0 auto;" %>
+            <%# Debug info %>
+            <% Rails.logger.debug "Image Data: #{home.image_data}" %>
+            <% Rails.logger.debug "Image Derivatives: #{home.image_derivatives.inspect}" %>
+            <% Rails.logger.debug "Image URL: #{home.image.url}" if home.image %>
+            
+            <% if home.image_derivatives.present? %>
+              <%= image_tag home.image_derivatives[:thumbnail].url, class: "img-responsive", style: "max-height: 225px; width: auto; margin: 0 auto;" %>
             <% else %>
               <%= image_tag home.image.url, class: "img-responsive", style: "max-height: 225px; width: auto; margin: 0 auto;" %>
             <% end %>

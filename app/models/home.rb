@@ -1,5 +1,5 @@
 class Home < ApplicationRecord
-  include ImageUploader::Attachment(:image)
+  include ImageUploader::Attachment.new(:image)
 
   belongs_to :created_by, class_name: "User"
 
@@ -17,9 +17,13 @@ class Home < ApplicationRecord
   def create_derivatives
     if image.present?
       begin
-        image_derivatives!
+        Rails.logger.info "Creating derivatives for home #{id}"
+        attacher = image_attacher
+        attacher.create_derivatives if attacher.stored?
+        Rails.logger.info "Derivatives created successfully"
       rescue => e
-        Rails.logger.error "Failed to create derivatives: #{e.message}"
+        Rails.logger.error "Failed to create derivatives for home #{id}: #{e.message}"
+        Rails.logger.error e.backtrace.join("\n")
       end
     end
   end
