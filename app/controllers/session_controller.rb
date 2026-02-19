@@ -7,9 +7,7 @@ class SessionController < ApplicationController
     self.current_user = User.from_omniauth(request.env['omniauth.auth'])
 
     if current_user
-      # Send the email notifying the user!
-      NotificationsMailer.signup(@user).deliver_later
-      redirect_to request.referer
+      redirect_to homes_path
     else
       redirect_to auth_path(provider: 'github')
     end
