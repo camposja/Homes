@@ -23,7 +23,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_20_000001) do
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
-  create_table "files", id: :serial, force: :cascade do |t|
+  create_table "files", id: :text, force: :cascade do |t|
     t.binary "content"
     t.text "metadata"
   end

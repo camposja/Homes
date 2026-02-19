@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'stringio'
 
 RSpec.describe Home, type: :model do
   describe 'validations' do
@@ -18,37 +17,32 @@ RSpec.describe Home, type: :model do
 
   describe 'image handling' do
     let(:home) { create(:home) }
-    let(:image_data) do
-      data = StringIO.new("fake image data")
-      data.instance_eval do
-        def original_filename; "test_image.jpg"; end
-        def content_type; "image/jpeg"; end
-      end
-      data
-    end
+    let(:image_file) { File.open(Rails.root.join("spec/fixtures/test_image.jpg")) }
+
+    after { image_file.close }
 
     it 'can attach an image' do
-      home.image = image_data
+      home.image = image_file
       expect(home.image).to be_present
     end
 
     it 'stores image metadata' do
-      home.image = image_data
-      home.save
-      
+      home.image = image_file
+      home.save!
+
       expect(home.image.metadata["filename"]).to eq("test_image.jpg")
       expect(home.image.metadata["size"]).to be > 0
     end
 
     it 'stores images in the database' do
-      home.image = image_data
-      home.save
-      
+      home.image = image_file
+      home.save!
+
       # Verify image data is stored in the database
-      image_data = JSON.parse(home.image_data)
-      expect(image_data["id"]).to be_present
-      expect(image_data["storage"]).to be_present
-      expect(image_data["metadata"]).to be_present
+      stored = JSON.parse(home.image_data)
+      expect(stored["id"]).to be_present
+      expect(stored["storage"]).to be_present
+      expect(stored["metadata"]).to be_present
     end
   end
 
@@ -58,15 +52,8 @@ RSpec.describe Home, type: :model do
     end
 
     it 'creates a home with image' do
-      home = create(:home)
-      data = StringIO.new("fake image data")
-      data.instance_eval do
-        def original_filename; "test_image.jpg"; end
-        def content_type; "image/jpeg"; end
-      end
-      home.image = data
-      home.save
+      home = create(:home, :with_image)
       expect(home.image).to be_present
     end
   end
-end 
+end
