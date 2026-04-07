@@ -67,7 +67,7 @@
         <% else %>
           <ul class="nav navbar-nav navbar-right">
             <li>
-              <p class="navbar-text"><%= link_to "| Log in |", auth_path(provider: "GitHub") %></p>
+              <p class="navbar-text"><%= button_to "| Log in |", auth_path(provider: "github"), class: "btn btn-link navbar-btn" %></p>
             </li>
           </ul>
         <% end %>

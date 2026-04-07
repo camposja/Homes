@@ -9,7 +9,7 @@ class SessionController < ApplicationController
     if current_user
       redirect_to homes_path
     else
-      redirect_to auth_path(provider: 'github')
+      redirect_to login_path
     end
   end
 

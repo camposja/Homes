@@ -14,8 +14,9 @@ Rails.application.routes.draw do
 
   get '/search', to: 'homes#index'
 
-  get    '/auth/:provider',          to: 'omniauth#auth',  as: :auth
+  post   '/auth/:provider',          to: 'session#new', as: :auth
   get    '/auth/:provider/callback', to: 'session#create'
+  post   '/auth/:provider/callback', to: 'session#create'
   get    '/auth/failure',            to: 'session#failure'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

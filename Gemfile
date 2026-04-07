@@ -1,4 +1,4 @@
-ruby '3.3.6'
+ruby '3.3.10'
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
@@ -12,8 +12,9 @@ gem 'rails', '~> 7.1.2'
 gem 'pg', '~> 1.1'
 # Use Puma as the app server
 gem 'puma'
+gem 'sprockets-rails'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails', '~> 6.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
@@ -31,8 +32,8 @@ gem 'jquery-rails'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Authentication with oauth
-gem 'omniauth', '~> 1.6', '>= 1.6.1'
-gem 'omniauth-github', '~> 1.2', '>= 1.2.3'
+gem 'omniauth', '~> 2.1'
+gem 'omniauth-github', '~> 2.0'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -72,7 +73,7 @@ group :development do
   gem 'binding_of_caller'
   gem 'brakeman'
   gem 'dotenv-rails'
-  gem 'listen', '~> 3.5.1'
+  gem 'listen'
   gem 'rubocop'
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
@@ -80,9 +81,6 @@ end
 
 # gem 'refile'
 # gem 'refile-postgres'
-group :production do
-  gem 'rails_12factor'
-end
 
 # gem 'gmaps4rails'
 # gem 'underscore-rails'

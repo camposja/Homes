@@ -87,7 +87,7 @@ class HomesController < ApplicationController
       if favorite.destroy
         format.json { head :ok }
       else
-        format.json { head :fail , message: login_url}
+        format.json { head :bad_request }
       end
     end
     Rails.logger.debug "UNFAVORITING"
