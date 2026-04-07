@@ -1,4 +1,4 @@
-app = "tiny-homes"
+app = "tiny-homes42"
 primary_region = "iad"
 
 # Do NOT use release_command with SQLite.
