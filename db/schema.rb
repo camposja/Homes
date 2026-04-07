@@ -11,10 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.1].define(version: 2024_03_20_000001) do
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
-  create_table "favorites", id: :serial, force: :cascade do |t|
+  create_table "favorites", force: :cascade do |t|
     t.integer "home_id"
     t.integer "user_id"
     t.datetime "created_at", precision: nil, null: false
@@ -23,12 +20,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_20_000001) do
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
-  create_table "files", id: :serial, force: :cascade do |t|
+  create_table "files", id: :text, force: :cascade do |t|
     t.binary "content"
     t.text "metadata"
   end
 
-  create_table "homes", id: :serial, force: :cascade do |t|
+  create_table "homes", force: :cascade do |t|
     t.string "address"
     t.string "city"
     t.string "state"
@@ -44,7 +41,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_20_000001) do
     t.integer "created_by_id"
   end
 
-  create_table "users", id: :serial, force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "provider"
     t.string "uid"

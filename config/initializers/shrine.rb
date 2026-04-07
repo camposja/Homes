@@ -3,7 +3,14 @@ require "shrine/storage/sql"
 require "image_processing/mini_magick"
 require "sequel"
 
-DB = Sequel.connect(Rails.application.config.database_configuration[Rails.env])
+# Sequel expects adapter name "sqlite", but ActiveRecord uses "sqlite3".
+db_config = Rails.application.config.database_configuration[Rails.env]
+sequel_config = db_config.dup
+sequel_config["adapter"] = "sqlite" if sequel_config["adapter"] == "sqlite3"
+DB = Sequel.connect(sequel_config)
+
+# Enable WAL mode for better concurrent read performance with SQLite
+DB.run("PRAGMA journal_mode=WAL") if sequel_config["adapter"] == "sqlite"
 
 Shrine.storages = {
   cache: Shrine::Storage::Sql.new(database: DB, table: :files),

@@ -8,8 +8,8 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 7.1.2'
-# Use postgresql as the database for Active Record
-gem 'pg', '~> 1.1'
+# Use SQLite as the database for Active Record
+gem 'sqlite3', '~> 1.7'
 # Use Puma as the app server
 gem 'puma'
 gem 'sprockets-rails'

@@ -1,0 +1,9 @@
+#!/bin/bash
+set -e
+
+# Run migrations on startup (not in release_command, since SQLite
+# needs the persistent volume which is only available to app machines).
+# db:prepare creates the database if it doesn't exist, then migrates.
+bin/rails db:prepare
+
+exec "$@"

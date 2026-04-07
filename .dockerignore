@@ -1,0 +1,13 @@
+.git
+.gitignore
+log/*
+tmp/*
+db/*.sqlite3
+db/*.sqlite3-*
+node_modules
+.env
+config/master.key
+spec/
+test/
+docs/
+.byebug_history

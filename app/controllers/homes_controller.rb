@@ -5,7 +5,7 @@ class HomesController < ApplicationController
   def index
     params[:search] = params[:q] if params[:q].present?
     if params[:search]
-      @homes = Home.where('zip ilike :pattern or description ilike :pattern or city ilike :pattern', pattern: "%#{params[:search]}%")
+      @homes = Home.where('LOWER(zip) LIKE LOWER(:pattern) OR LOWER(description) LIKE LOWER(:pattern) OR LOWER(city) LIKE LOWER(:pattern)', pattern: "%#{params[:search]}%")
     else
       @homes = Home.order(:price)
     end
