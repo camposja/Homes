@@ -3,6 +3,9 @@ require "shrine/storage/sql"
 require "image_processing/mini_magick"
 require "sequel"
 
+# Skip DB connection during asset precompilation (no database available during Docker build)
+return if ENV["SECRET_KEY_BASE_DUMMY"].present?
+
 # Sequel expects adapter name "sqlite", but ActiveRecord uses "sqlite3".
 db_config = Rails.application.config.database_configuration[Rails.env]
 sequel_config = db_config.dup
