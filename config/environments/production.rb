@@ -17,7 +17,7 @@ Rails.application.configure do
   config.log_tags = [ :request_id ]
 
   # Always log to stdout on Fly.io
-  config.logger = ActiveSupport::TaggedLogging.logger(STDOUT)
+  config.logger = ActiveSupport::TaggedLogging.new(ActiveSupport::Logger.new(STDOUT))
 
   config.action_mailer.perform_caching = false
   config.action_mailer.default_url_options = { host: 'TinyEstates.com' }
