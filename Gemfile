@@ -84,3 +84,5 @@ end
 
 # gem 'gmaps4rails'
 # gem 'underscore-rails'
+
+gem "dockerfile-rails", ">= 1.7", :group => :development
