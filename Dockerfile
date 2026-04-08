@@ -5,7 +5,7 @@ FROM ruby:3.3.10-slim AS build
 
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y \
-    build-essential libsqlite3-dev git pkg-config libyaml-dev && \
+    build-essential libsqlite3-dev git pkg-config libyaml-dev nodejs && \
     rm -rf /var/lib/apt/lists/*
 
 WORKDIR /rails
@@ -18,14 +18,14 @@ RUN bundle config set --local deployment true && \
 
 COPY . .
 
-RUN SECRET_KEY_BASE_DUMMY=1 bin/rails assets:precompile
+RUN SECRET_KEY_BASE_DUMMY=1 RAILS_ENV=production bin/rails assets:precompile
 
 # --- Runtime stage ---
 FROM ruby:3.3.10-slim
 
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y \
-    libsqlite3-0 imagemagick curl && \
+    libsqlite3-0 libyaml-0-2 imagemagick curl && \
     rm -rf /var/lib/apt/lists/*
 
 WORKDIR /rails
