@@ -5,7 +5,7 @@ FROM ruby:3.3.10-slim AS build
 
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y \
-    build-essential libsqlite3-dev git pkg-config && \
+    build-essential libsqlite3-dev git pkg-config libyaml-dev && \
     rm -rf /var/lib/apt/lists/*
 
 WORKDIR /rails
