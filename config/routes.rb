@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  # Mount Shrine download endpoint
-  mount Shrine.download_endpoint => "/attachments"
+  # Mount Shrine download endpoint (skipped during asset precompilation)
+  mount Shrine.download_endpoint => "/attachments" if Shrine.respond_to?(:download_endpoint)
 
   get 'pages/landing'
   root 'pages#landing'
