@@ -1,12 +1,15 @@
 threads_count = ENV.fetch("RAILS_MAX_THREADS") { 5 }.to_i
 threads threads_count, threads_count
 
-port ENV.fetch("PORT") { 3000 }
-
 environment ENV.fetch("RAILS_ENV") { "development" }
 
-# Bind to all interfaces in production (required for containers/Fly.io)
-bind "tcp://0.0.0.0:#{ENV.fetch('PORT') { 3000 }}" if ENV["RAILS_ENV"] == "production"
+# In production, bind to all interfaces (required for containers/Fly.io)
+# In development, bind to localhost only
+if ENV["RAILS_ENV"] == "production"
+  bind "tcp://0.0.0.0:#{ENV.fetch('PORT') { 3000 }}"
+else
+  port ENV.fetch("PORT") { 3000 }
+end
 
 # IMPORTANT: Do NOT use workers with SQLite.
 # SQLite allows only one writer at a time. Multiple Puma worker processes
